@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import { cn } from '@/lib/utils';
+import { JsonLd } from '@/components/seo/JsonLd'; // 👈 IMPORT JSON-LD DI SINI
 
 // Setup Google Fonts dengan optimasi Next.js (tanpa request eksternal di runtime)
 const inter = Inter({
@@ -35,7 +36,13 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: 'Wajidun Niam' }],
   creator: 'Wajidun Niam',
-  metadataBase: new URL('https://wajidunniam.vercel.app'), // Ganti nanti saat deploy
+  metadataBase: new URL('https://wajidunniam.vercel.app'),
+  
+  // 👈 TAMBAHKAN CANONICAL URL UNTUK MENGHINDARI DUPLICATE CONTENT
+  alternates: {
+    canonical: 'https://wajidunniam.vercel.app',
+  },
+  
   openGraph: {
     type: 'website',
     locale: 'id_ID',
@@ -57,7 +64,6 @@ export const metadata: Metadata = {
       follow: true,
     },
   },
-  // 👇 TAMBAHKAN BAGIAN INI UNTUK FAVICON "WN"
   icons: {
     icon: [
       { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
@@ -89,6 +95,9 @@ export default function RootLayout({
           jetbrainsMono.variable
         )}
       >
+        {/* 👈 TAMBAHKAN KOMPONEN JSON-LD DI SINI */}
+        <JsonLd />
+        
         {children}
       </body>
     </html>
