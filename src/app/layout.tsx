@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { Inter, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import { cn } from '@/lib/utils';
-import { JsonLd } from '@/components/seo/JsonLd'; // 👈 IMPORT JSON-LD DI SINI
+import { JsonLd } from '@/components/seo/JsonLd';
 
 // Setup Google Fonts dengan optimasi Next.js (tanpa request eksternal di runtime)
 const inter = Inter({
@@ -37,12 +37,9 @@ export const metadata: Metadata = {
   authors: [{ name: 'Wajidun Niam' }],
   creator: 'Wajidun Niam',
   metadataBase: new URL('https://wajidunniam.vercel.app'),
-  
-  // 👈 TAMBAHKAN CANONICAL URL UNTUK MENGHINDARI DUPLICATE CONTENT
   alternates: {
     canonical: 'https://wajidunniam.vercel.app',
   },
-  
   openGraph: {
     type: 'website',
     locale: 'id_ID',
@@ -79,6 +76,10 @@ export const metadata: Metadata = {
       },
     ],
   },
+  // 👇 TAMBAHKAN BAGIAN INI UNTUK VERIFIKASI GOOGLE SEARCH CONSOLE
+  verification: {
+    google: '0ODXXZ-EJEvtoCj9SR_Yus5KphtuaNhbDu-xBqM3hx8',
+  },
 };
 
 export default function RootLayout({
@@ -95,9 +96,7 @@ export default function RootLayout({
           jetbrainsMono.variable
         )}
       >
-        {/* 👈 TAMBAHKAN KOMPONEN JSON-LD DI SINI */}
         <JsonLd />
-        
         {children}
       </body>
     </html>
