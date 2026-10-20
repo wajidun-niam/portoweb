@@ -36,7 +36,6 @@ export const projects: Project[] = [
       'Auto-cleanup storage saat data dihapus',
     ],
     status: 'uat',
-    githubUrl: 'https://github.com/wajidun-niam/sidzaki', // Ganti nanti
   },
   {
     id: 'webgis-jambi',
